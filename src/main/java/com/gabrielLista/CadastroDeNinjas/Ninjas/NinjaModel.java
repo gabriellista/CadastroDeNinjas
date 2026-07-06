@@ -1,6 +1,9 @@
-package com.gabrielLista.CadastroDeNinjas;
+package com.gabrielLista.CadastroDeNinjas.Ninjas;
 
+import com.gabrielLista.CadastroDeNinjas.Missoes.MissoesModel;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 //ele transforma umma classe em uma entidade do BB
 //JPA java persistence API
@@ -16,6 +19,12 @@ public class NinjaModel {
     private String nome;
     private String email;
     private int idade;
+
+    //UM NINJA TEM UMA UNICA MISSA
+    @ManyToOne
+    @JoinColumn(name = "missoes_id") //chave estrangeira
+    private MissoesModel missoes;
+
 
     public NinjaModel() {
     }
