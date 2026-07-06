@@ -1,4 +1,4 @@
 package com.gabrielLista.CadastroDeNinjas.Ninjas;
 
-public class NinjaRepository {
+public interface NinjaRepository {
 }
