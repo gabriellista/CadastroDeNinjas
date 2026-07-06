@@ -2,12 +2,19 @@ package com.gabrielLista.CadastroDeNinjas.Missoes;
 
 import com.gabrielLista.CadastroDeNinjas.Ninjas.NinjaModel;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.nio.MappedByteBuffer;
 import java.util.List;
 
 @Entity
 @Table(name = "tb_missoes")
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+
 public class MissoesModel {
 
     @Id
@@ -19,5 +26,5 @@ public class MissoesModel {
     //UMA MISSAO TEM MAIS DE UM NINJA
     @OneToMany(mappedBy = "missoes")
     private List<NinjaModel> ninja;
-    
+
 }
