@@ -1,0 +1,59 @@
+[33mcommit 3a06decca0d2ce7cfbeb99f079c45a97fe0c80f5[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Gabriel Felipe <gabrielflds@gmail.com>
+Date:   Mon Jul 6 15:41:56 2026 -0300
+
+    build:Conecta o banco de dados h2 a minha aplicacao SPRING
+
+[33mcommit 0c6d6b8baa06c4612a40af664ec5dfafdb6b5a57[m
+Author: Gabriel Felipe <gabrielflds@gmail.com>
+Date:   Mon Jul 6 15:40:06 2026 -0300
+
+    chore: .gitgnore adiciona as minhas credenciais do db
+
+[33mcommit 5d1e9ba9c301388061a10b136844bce072355be1[m
+Author: Gabriel Felipe <gabrielflds@gmail.com>
+Date:   Mon Jul 6 14:38:55 2026 -0300
+
+     fix:Adiciona o @Column na ninja classe
+
+[33mcommit b85d76d9847da0d6e47f9e89bba7137825ea5091[m
+Author: Gabriel Felipe <gabrielflds@gmail.com>
+Date:   Mon Jul 6 14:07:20 2026 -0300
+
+     feat: Criado Missoes Repository e implementado o JPA
+
+[33mcommit 81f6a3128a3175f74c8aceaa09a6836d8718b546[m
+Author: Gabriel Felipe <gabrielflds@gmail.com>
+Date:   Mon Jul 6 10:26:15 2026 -0300
+
+     fix:Esse commit coloca a colina no email como UNIQUE
+
+[33mcommit 513112b858d3f5633a1a972113cbc171c9418c6d[m
+Author: Gabriel Felipe <gabrielflds@gmail.com>
+Date:   Mon Jul 6 10:22:37 2026 -0300
+
+    feat: Coloca o Lombok na classe para abistração
+
+[33mcommit 9605755b2cef3eaf65ed90df1f45028c59f4ce42[m
+Author: Gabriel Felipe <gabrielflds@gmail.com>
+Date:   Mon Jul 6 10:08:21 2026 -0300
+
+    Modelagem para o banco de dados,NinjaModel e MisoesModel concluidos,anotations feitas para relacionamentos de tabelas
+
+[33mcommit c1dfd61c50061978d4140dfe6d2eebb9c0ef782d[m
+Author: Gabriel Felipe <gabrielflds@gmail.com>
+Date:   Tue Jun 30 14:59:32 2026 -0300
+
+    Criar uma entidade no banco de dados a partir do ninjaModel
+
+[33mcommit 278fdc8235b8c380ab5caf192f60eb1d96906def[m
+Author: Gabriel Felipe <gabrielflds@gmail.com>
+Date:   Tue Jun 30 13:39:02 2026 -0300
+
+    Criando a Controller
+
+[33mcommit ec2e5e73810c08b467a1a7744f15cf9cdf70b939[m
+Author: Gabriel Felipe <gabrielflds@gmail.com>
+Date:   Tue Jun 30 13:08:18 2026 -0300
+
+    first commit
