@@ -5,7 +5,7 @@ import jakarta.persistence.PreUpdate;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("missoes")
+@RequestMapping("/missoes")
 
 public class MissoesController {
 
