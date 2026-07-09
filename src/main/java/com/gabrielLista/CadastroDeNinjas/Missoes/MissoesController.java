@@ -1,7 +1,5 @@
 package com.gabrielLista.CadastroDeNinjas.Missoes;
 
-
-import jakarta.persistence.PreUpdate;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
