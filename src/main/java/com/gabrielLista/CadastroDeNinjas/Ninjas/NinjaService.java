@@ -1,7 +1,6 @@
 package com.gabrielLista.CadastroDeNinjas.Ninjas;
 
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -22,6 +21,9 @@ public class NinjaService {
         Optional<NinjaModel> ninjaPorId=ninjaRepository.findById(id);
         return ninjaPorId.orElse(null);
     }
-
+    //CRIAR UM NOVO NINJA
+    public NinjaModel criarNinja(NinjaModel ninja){
+        return ninjaRepository.save(ninja);
+    }
 
 }
