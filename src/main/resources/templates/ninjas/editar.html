@@ -1,0 +1,15 @@
+<form th:object="${ninja}"
+      th:action="@{/web/ninjas/{id}/editar(id=${ninja.id})}"
+      method="post" xmlns:th="http://www.w3.org/1999/xhtml">
+
+    <label>Nome:</label>
+    <input type="text" th:field="*{nome}">
+
+    <label>Email:</label>
+    <input type="text" th:field="*{email}">
+
+    <label>Rank:</label>
+    <input type="text" th:field="*{rank}">
+
+    <button type="submit">Salvar</button>
+</form>

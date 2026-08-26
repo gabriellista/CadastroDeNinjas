@@ -1,0 +1,335 @@
+/* Remove espaçamentos inesperados dos elementos */
+* {
+    box-sizing: border-box;
+}
+
+/* Cores principais da página */
+:root {
+    --cor-fundo: #f5f3ff;
+    --cor-painel: #ffffff;
+
+    --cor-primaria: #4c1d95;
+    --cor-primaria-clara: #7c3aed;
+
+    --cor-destaque: #f97316;
+    --cor-destaque-clara: #ffedd5;
+
+    --cor-texto: #1f2937;
+    --cor-texto-secundario: #6b7280;
+
+    --cor-borda: #e5e7eb;
+    --cor-linha: #fafafa;
+
+    --sombra:
+        0 15px 35px rgba(76, 29, 149, 0.12);
+}
+
+/* Página inteira */
+body {
+    margin: 0;
+
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: var(--cor-texto);
+
+    background:
+        linear-gradient(
+            135deg,
+            #f5f3ff,
+            #fff7ed
+        );
+}
+
+/* Cabeçalho superior */
+.topo {
+    padding: 48px 20px 80px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--cor-primaria),
+            var(--cor-primaria-clara),
+            var(--cor-destaque)
+        );
+}
+
+.topo-conteudo {
+    width: min(1100px, 100%);
+    margin: 0 auto;
+}
+
+.topo-etiqueta {
+    display: inline-block;
+
+    margin-bottom: 12px;
+    padding: 7px 12px;
+
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.topo h1 {
+    margin: 0 0 10px;
+
+    font-size: clamp(32px, 5vw, 52px);
+}
+
+.topo p {
+    max-width: 600px;
+
+    margin: 0;
+
+    font-size: 17px;
+    line-height: 1.5;
+
+    color: rgba(255, 255, 255, 0.88);
+}
+
+/* Conteúdo central */
+.container {
+    width: min(1100px, calc(100% - 32px));
+
+    margin: -45px auto 50px;
+}
+
+/* Caixa branca da tabela */
+.painel {
+    overflow: hidden;
+
+    border: 1px solid rgba(76, 29, 149, 0.08);
+    border-radius: 22px;
+
+    background: var(--cor-painel);
+
+    box-shadow: var(--sombra);
+}
+
+/* Cabeçalho da caixa */
+.painel-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 26px 30px;
+
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+.painel-cabecalho h2 {
+    margin: 0 0 6px;
+
+    color: var(--cor-primaria);
+}
+
+.painel-cabecalho p {
+    margin: 0;
+
+    color: var(--cor-texto-secundario);
+}
+
+/* Permite rolar a tabela no celular */
+.tabela-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* Tabela */
+.tabela-ninjas {
+    width: 100%;
+
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.tabela-ninjas th {
+    padding: 16px 20px;
+
+    text-align: left;
+    white-space: nowrap;
+
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+
+    color: var(--cor-primaria);
+
+    background: #f5f3ff;
+}
+
+.tabela-ninjas td {
+    padding: 18px 20px;
+
+    vertical-align: middle;
+
+    border-top: 1px solid var(--cor-borda);
+}
+
+/* Linhas alternadas */
+.tabela-ninjas tbody tr:nth-child(even) {
+    background: var(--cor-linha);
+}
+
+/* Efeito ao passar o mouse */
+.tabela-ninjas tbody tr {
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.tabela-ninjas tbody tr:hover {
+    background: #fff7ed;
+}
+
+/* Coluna da imagem */
+.coluna-foto {
+    width: 95px;
+}
+
+/* Imagem circular */
+.ninja-foto {
+    display: block;
+
+    width: 68px;
+    height: 68px;
+
+    object-fit: cover;
+
+    border: 4px solid var(--cor-destaque-clara);
+    border-radius: 50%;
+
+    box-shadow:
+        0 5px 14px rgba(249, 115, 22, 0.2);
+}
+
+/* Nome e ID */
+.coluna-ninja strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-size: 16px;
+
+    color: var(--cor-texto);
+}
+
+.coluna-ninja span {
+    font-size: 13px;
+
+    color: var(--cor-texto-secundario);
+}
+
+/* Badge da idade */
+.idade-badge {
+    display: inline-block;
+
+    padding: 7px 11px;
+
+    white-space: nowrap;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    color: #92400e;
+
+    border-radius: 999px;
+
+    background: #fef3c7;
+}
+
+/* Badge da missão */
+.missao-badge {
+    display: inline-block;
+
+    max-width: 260px;
+
+    padding: 8px 12px;
+
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1.3;
+
+    color: #5b21b6;
+
+    border: 1px solid #ddd6fe;
+    border-radius: 999px;
+
+    background: #ede9fe;
+}
+
+/* Mensagem quando a lista está vazia */
+.lista-vazia {
+    padding: 60px 20px !important;
+
+    text-align: center;
+}
+
+.lista-vazia-conteudo span {
+    display: block;
+
+    margin-bottom: 12px;
+
+    font-size: 48px;
+}
+
+.lista-vazia-conteudo strong {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 20px;
+
+    color: var(--cor-primaria);
+}
+
+.lista-vazia-conteudo p {
+    margin: 0;
+
+    color: var(--cor-texto-secundario);
+}
+
+/* Rodapé */
+.rodape {
+    padding: 25px;
+
+    text-align: center;
+
+    font-size: 14px;
+
+    color: var(--cor-texto-secundario);
+}
+
+/* Ajustes para celular */
+@media (max-width: 700px) {
+
+    .topo {
+        padding-top: 35px;
+    }
+
+    .painel-cabecalho {
+        padding: 22px 20px;
+    }
+
+    .tabela-ninjas th,
+    .tabela-ninjas td {
+        padding: 14px;
+    }
+
+    .ninja-foto {
+        width: 56px;
+        height: 56px;
+    }
+}
