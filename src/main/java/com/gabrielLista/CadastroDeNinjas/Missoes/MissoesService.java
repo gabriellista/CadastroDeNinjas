@@ -1,0 +1,39 @@
+package com.gabrielLista.CadastroDeNinjas.Missoes;
+
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+
+public class MissoesService {
+    private final MissoesRepository missoesRepository;
+    private final MissoesMapper missoesMapper;
+
+    public MissoesService(MissoesRepository missoesRepository, MissoesMapper missoesMapper) {
+        this.missoesRepository = missoesRepository;
+        this.missoesMapper = missoesMapper;
+    }
+
+    public List<MissoesDTO> listarMissoes() {
+        return missoesRepository.findAll()
+                .stream()
+                .map(missoesMapper::map)
+            .toList();
+    }
+
+    public MissoesDTO criarMissao(MissoesDTO missaoDTO) {
+        MissoesModel missao = missoesMapper.map(missaoDTO);
+        MissoesModel missaoSalva = missoesRepository.save(missao);
+        return missoesMapper.map(missaoSalva);
+    }
+
+    public MissoesDTO buscarMissaoPorId(Long id) {
+        Optional<MissoesModel> missao = missoesRepository.findById(id);
+        if (missao.isPresent()) {
+            return missoesMapper.map(missao.get());
+        }
+        return null;
+    }
+}
