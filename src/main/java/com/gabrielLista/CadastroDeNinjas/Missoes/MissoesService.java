@@ -20,7 +20,7 @@ public class MissoesService {
         return missoesRepository.findAll()
                 .stream()
                 .map(missoesMapper::map)
-            .toList();
+                .toList();
     }
 
     public MissoesDTO criarMissao(MissoesDTO missaoDTO) {
@@ -35,5 +35,28 @@ public class MissoesService {
             return missoesMapper.map(missao.get());
         }
         return null;
+    }
+
+    public MissoesDTO atualizarMissao(Long id, MissoesDTO missaoDTO) {
+        Optional<MissoesModel> missaoExistente = missoesRepository.findById(id);
+        if (missaoExistente.isPresent()) {
+
+            MissoesModel missaoAtualizada = missaoExistente.get();
+            missaoAtualizada.setNome(missaoDTO.getNome());
+            missaoAtualizada.setDificuldade(missaoDTO.getDificuldade());
+
+            MissoesModel missaoSalva = missoesRepository.save(missaoAtualizada);
+            return missoesMapper.map(missaoSalva);
+        }
+        return null;
+    }
+
+    public boolean deletarMissao(Long id) {
+        Optional<MissoesModel> missaoExistente = missoesRepository.findById(id);
+        if (missaoExistente.isPresent()) {
+            missoesRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }

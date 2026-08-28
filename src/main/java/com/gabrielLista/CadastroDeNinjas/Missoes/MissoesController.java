@@ -50,4 +50,25 @@ public class MissoesController {
         return ResponseEntity.notFound().build();
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<MissoesDTO> atualizarMissao(
+            @PathVariable Long id,
+            @RequestBody MissoesDTO missaoDTO) {
+        MissoesDTO missaoAtualizada = missoesService.atualizarMissao(id, missaoDTO);
+        if (missaoAtualizada != null) {
+            return ResponseEntity.ok(missaoAtualizada);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletarMissao(
+            @PathVariable Long id) {
+        boolean deletada = missoesService.deletarMissao(id);
+        if (deletada) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
+
 }
