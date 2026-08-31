@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Missão</title>
+</head>
+
+<body>
+
+<form th:object="${missao}"
+      method="post"
+      th:action="@{/web/missoes/{id}/editar(id=${missao.id})}">
+
+    <label>Nome:</label>
+    <input type="text" th:field="*{nome}">
+
+    <label>Dificuldade:</label>
+    <input type="text" th:field="*{dificuldade}">
+
+    <button type="submit">Salvar</button>
+
+</form>
+
+</body>
+</html>

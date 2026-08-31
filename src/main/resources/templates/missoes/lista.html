@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Missões</title>
+</head>
+
+<body>
+
+<h1>Lista de Missões</h1>
+
+<table>
+
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Dificuldade</th>
+        <th>Ações</th>
+    </tr>
+
+    <tr th:each="missao : ${missoes}">
+        <td th:text="${missao.id}"></td>
+        <td th:text="${missao.nome}"></td>
+        <td th:text="${missao.dificuldade}"></td>
+
+        <td>
+            <a th:href="@{/web/missoes/{id}/editar(id=${missao.id})}">
+                Editar
+            </a>
+        </td>
+    </tr>
+
+</table>
+
+</body>
+</html>
