@@ -1,6 +1,10 @@
 package com.gabrielLista.CadastroDeNinjas.Missoes;
 
+import com.gabrielLista.CadastroDeNinjas.Ninjas.NinjaRepository;
 import org.springframework.stereotype.Service;
+import com.gabrielLista.CadastroDeNinjas.Ninjas.NinjaModel;
+import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -10,10 +14,12 @@ import java.util.Optional;
 public class MissoesService {
     private final MissoesRepository missoesRepository;
     private final MissoesMapper missoesMapper;
+    private final NinjaRepository ninjaRepository;
 
-    public MissoesService(MissoesRepository missoesRepository, MissoesMapper missoesMapper) {
+    public MissoesService(MissoesRepository missoesRepository, MissoesMapper missoesMapper, NinjaRepository ninjaRepository) {
         this.missoesRepository = missoesRepository;
         this.missoesMapper = missoesMapper;
+        this.ninjaRepository = ninjaRepository;
     }
 
     public List<MissoesDTO> listarMissoes() {
@@ -51,9 +57,16 @@ public class MissoesService {
         return null;
     }
 
+    @Transactional
     public boolean deletarMissao(Long id) {
         Optional<MissoesModel> missaoExistente = missoesRepository.findById(id);
         if (missaoExistente.isPresent()) {
+            List<NinjaModel> ninjas =
+                    ninjaRepository.findByMissoes_Id(id);
+            for (NinjaModel ninja : ninjas) {
+                ninja.setMissoes(null);
+            }
+            ninjaRepository.saveAll(ninjas);
             missoesRepository.deleteById(id);
             return true;
         }

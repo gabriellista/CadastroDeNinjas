@@ -11,6 +11,8 @@
 
 <h1>Lista de Missões</h1>
 
+<a th:href="@{/web/missoes/nova}">Nova Missão</a>
+
 <table>
 
     <tr>
@@ -29,6 +31,12 @@
             <a th:href="@{/web/missoes/{id}/editar(id=${missao.id})}">
                 Editar
             </a>
+            <form th:action="@{/web/missoes/{id}/excluir(id=${missao.id})}"
+                  method="post">
+
+                <button type="submit">Excluir</button>
+
+            </form>
         </td>
     </tr>
 

@@ -1,6 +1,5 @@
 package com.gabrielLista.CadastroDeNinjas.Missoes;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +34,25 @@ public class MissoesViewController {
     @PostMapping("/{id}/editar")
     public String salvarEdicao(@PathVariable Long id, @ModelAttribute MissoesDTO missoesDTO){
         MissoesDTO missao = missoesService.atualizarMissao(id, missoesDTO);
+        return "redirect:/web/missoes";
+    }
+
+    @PostMapping("/{id}/excluir")
+    public String excluirMissao(@PathVariable Long id){
+        missoesService.deletarMissao(id);
+        return "redirect:/web/missoes";
+    }
+
+    @GetMapping ("/nova")
+    public String exibirFormularioCriacao(Model model) {
+        MissoesDTO missao = new MissoesDTO();
+        model.addAttribute("missao", missao);
+        return "missoes/criar";
+    }
+
+    @PostMapping("/nova")
+    public String criarMissao(@ModelAttribute MissoesDTO missaoDTO){
+        missoesService.criarMissao(missaoDTO);
         return "redirect:/web/missoes";
     }
 }
