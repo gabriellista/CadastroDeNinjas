@@ -1,5 +1,7 @@
 package com.gabrielLista.CadastroDeNinjas.Ninjas;
 
+import com.gabrielLista.CadastroDeNinjas.Missoes.MissoesDTO;
+import com.gabrielLista.CadastroDeNinjas.Missoes.MissoesService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,9 +13,11 @@ import java.util.List;
 public class NinjaViewController {
 
     private final NinjaService ninjaService;
+    private final MissoesService missoesService;
 
-    public NinjaViewController(NinjaService ninjaService) {
+    public NinjaViewController(NinjaService ninjaService, MissoesService missoesService) {
         this.ninjaService = ninjaService;
+        this.missoesService = missoesService;
     }
 
     @GetMapping
@@ -26,15 +30,17 @@ public class NinjaViewController {
     @GetMapping("/{id}/editar")
     public String exibirFormularioEdicao(@PathVariable Long id, Model model) {
         NinjaDTO ninja = ninjaService.listarNinjasPorId(id);
+        List<MissoesDTO> missoes = missoesService.listarMissoes();
         model.addAttribute("ninja", ninja);
+        model.addAttribute("missoes", missoes);
         return "ninjas/editar";
     }
 
     @PostMapping("/{id}/editar")
-    public String salvarEdicao(
-            @PathVariable Long id,
-            @ModelAttribute NinjaDTO ninja) {
-        ninjaService.atualizarNinja(id, ninja);
+    public String salvarEdicao(@PathVariable Long id,
+                               @ModelAttribute NinjaDTO ninja,
+                               @RequestParam(required = false) Long missaoId) {
+        ninjaService.atualizarNinja(id, ninja, missaoId);
         return "redirect:/web/ninjas";
     }
 }

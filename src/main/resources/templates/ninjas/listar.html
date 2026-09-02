@@ -16,7 +16,9 @@
     <th>Nome</th>
     <th>Email</th>
     <th>Rank</th>
-    </tr>
+    <th>Missão</th>
+    <th>Ações</th>
+        </tr>
 
 <tr th:each="ninja : ${ninjas}">
     <td th:text="${ninja.id}"></td>
@@ -26,6 +28,12 @@
     <td th:text="${ninja.nome}"></td>
     <td th:text="${ninja.email}"></td>
     <td th:text="${ninja.rank}"></td>
+    <td th:text="${ninja.missoes != null ? ninja.missoes.nome : 'Sem missão'}"></td>
+    <td>
+        <a th:href="@{/web/ninjas/{id}/editar(id=${ninja.id})}">
+            Editar
+        </a>
+    </td>
 </tr>
 </table>
 
