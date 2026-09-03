@@ -37,6 +37,10 @@
         <a th:href="@{/web/ninjas/{id}/editar(id=${ninja.id})}">
             Editar
         </a>
+        <form th:action="@{/web/ninjas/{id}/excluir(id=${ninja.id})}"
+              method="post">
+            <button type="submit">Excluir</button>
+        </form>
     </td>
 </tr>
 </table>
