@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -41,6 +42,23 @@ public class NinjaViewController {
                                @ModelAttribute NinjaDTO ninja,
                                @RequestParam(required = false) Long missaoId) {
         ninjaService.atualizarNinja(id, ninja, missaoId);
+        return "redirect:/web/ninjas";
+    }
+
+    @GetMapping("/novo")
+    public String exibirFormularioCriacao(Model model){
+        NinjaDTO ninja = new NinjaDTO();
+        List<MissoesDTO> missoes = missoesService.listarMissoes();
+        model.addAttribute("ninja", ninja);
+        model.addAttribute("missoes", missoes);
+        return "ninjas/criar";
+    }
+
+    @PostMapping("/novo")
+    public String criarNinja(
+            @ModelAttribute NinjaDTO ninjaDTO,
+            @RequestParam(required = false) Long missaoId) {
+        ninjaService.criarNinja(ninjaDTO, missaoId);
         return "redirect:/web/ninjas";
     }
 }

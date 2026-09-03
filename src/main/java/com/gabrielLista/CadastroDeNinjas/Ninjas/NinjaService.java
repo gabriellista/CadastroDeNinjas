@@ -40,6 +40,19 @@ public class NinjaService {
         return ninjaMapper.map(ninja);
     }
 
+    public NinjaDTO criarNinja(NinjaDTO ninjaDTO, Long missaoId) {
+        NinjaModel ninja = ninjaMapper.map(ninjaDTO);
+        if (missaoId!= null){
+            Optional<MissoesModel> missao = missoesRepository.findById(missaoId);
+
+            if (missao.isPresent()) {
+                ninja.setMissoes(missao.get());
+            }
+        }
+        NinjaModel ninjaSalvo = ninjaRepository.save(ninja);
+        return ninjaMapper.map(ninjaSalvo);
+    }
+
 
     public void deletarNinjaPorId(Long id) {
         ninjaRepository.deleteById(id);
