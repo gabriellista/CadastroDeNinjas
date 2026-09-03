@@ -61,4 +61,10 @@ public class NinjaViewController {
         ninjaService.criarNinja(ninjaDTO, missaoId);
         return "redirect:/web/ninjas";
     }
+
+    @PostMapping("/{id}/excluir")
+    public String excluirNinja(@PathVariable Long id){
+        ninjaService.deletarNinjaPorId(id);
+        return "redirect:/web/ninjas";
+    }
 }

@@ -8,9 +8,8 @@
 
 <h1>Lista de Ninjas</h1>
 
-<a th:href="@{/web/ninjas/novo}">
-    Novo Ninja
-</a>
+<a th:href="@{/web/ninjas/novo}">Novo Ninja</a>
+<a th:href="@{/web/missoes}">Missões</a>
 
 <table>
 
@@ -37,6 +36,10 @@
         <a th:href="@{/web/ninjas/{id}/editar(id=${ninja.id})}">
             Editar
         </a>
+        <form th:action="@{/web/ninjas/{id}/excluir(id=${ninja.id})}"
+              method="post">
+            <button type="submit">Excluir</button>
+        </form>
     </td>
 </tr>
 </table>
