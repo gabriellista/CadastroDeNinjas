@@ -37,7 +37,7 @@ public class NinjaController {
     //MOSTRAR NINJA POR ID
     @GetMapping("/listar/{id}")
     public ResponseEntity<?> listarNinjasporId(@PathVariable Long id) {
-        NinjaDTO ninjaListar = ninjaService.listarNinjasPorId(id);
+        NinjaDTO ninjaListar = ninjaService.buscarNinjaPorId(id);
         if (ninjaListar != null){
             return ResponseEntity.ok(ninjaListar) ;
         }else
@@ -59,7 +59,7 @@ public class NinjaController {
         //DELETAR NINJA
         @DeleteMapping("/deletar/{id}")
         public ResponseEntity<String> deletarNinjaPorId(@PathVariable Long id) {
-            if (ninjaService.listarNinjasPorId(id) != null) {
+            if (ninjaService.buscarNinjaPorId(id) != null) {
                 ninjaService.deletarNinjaPorId(id);
                 return ResponseEntity.ok("Ninja com o ID" + id + "deletado com sucesso");
             }else

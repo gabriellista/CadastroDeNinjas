@@ -28,7 +28,7 @@ public class NinjaViewController {
 
     @GetMapping("/{id}/editar")
     public String exibirFormularioEdicao(@PathVariable Long id, Model model) {
-        NinjaDTO ninja = ninjaService.listarNinjasPorId(id);
+        NinjaDTO ninja = ninjaService.buscarNinjaPorId(id);
         List<MissoesDTO> missoes = missoesService.listarMissoes();
         model.addAttribute("ninja", ninja);
         model.addAttribute("missoes", missoes);
