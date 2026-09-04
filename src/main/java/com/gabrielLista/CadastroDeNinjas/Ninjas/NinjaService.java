@@ -53,8 +53,12 @@ public class NinjaService {
     }
 
 
-    public void deletarNinjaPorId(Long id) {
-        ninjaRepository.deleteById(id);
+    public boolean deletarNinjaPorId(Long id) {
+        if (ninjaRepository.existsById(id)) {
+            ninjaRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 
 
