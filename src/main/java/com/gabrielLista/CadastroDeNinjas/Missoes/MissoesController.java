@@ -17,13 +17,13 @@ public class MissoesController {
     }
 
     // GET--Mandar uma requisao para mostrar as missoes
-    @GetMapping("/listar")
+    @GetMapping
     public List<MissoesDTO> listarMissoes(){
         return missoesService.listarMissoes();
     }
 
     // POST--Mandar uma requisao para criar as missoes
-    @PostMapping("/criar")
+    @PostMapping
     public MissoesDTO criarMissao(@RequestBody MissoesDTO missaoDTO) {
         return missoesService.criarMissao(missaoDTO);
     }
