@@ -28,19 +28,6 @@ public class MissoesController {
         return missoesService.criarMissao(missaoDTO);
     }
 
-
-    // PUT--Mandar uma requisao para alterar as missoes
-    @PutMapping("/alterar")
-    public String alterarMissao(){
-        return "Missão alterada com sucesso";
-    }
-
-    // DEL--Mandar uma requisao para deletar as missoes
-    @DeleteMapping("/deletar")
-    public String deletarMissao(){
-        return "Missão deletada com sucesso";
-    }
-
     @GetMapping("/{id}")
     public ResponseEntity<MissoesDTO> buscarMissaoPorId(@PathVariable Long id) {
         MissoesDTO missao = missoesService.buscarMissaoPorId(id);
