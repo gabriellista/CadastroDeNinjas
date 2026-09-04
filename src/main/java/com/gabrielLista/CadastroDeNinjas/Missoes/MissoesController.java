@@ -1,8 +1,8 @@
 package com.gabrielLista.CadastroDeNinjas.Missoes;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -24,8 +24,10 @@ public class MissoesController {
 
     // POST--Mandar uma requisao para criar as missoes
     @PostMapping
-    public MissoesDTO criarMissao(@RequestBody MissoesDTO missaoDTO) {
-        return missoesService.criarMissao(missaoDTO);
+    public ResponseEntity<MissoesDTO> criarMissao(@RequestBody MissoesDTO missaoDTO) {
+        MissoesDTO novaMissao = missoesService.criarMissao(missaoDTO);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(novaMissao);
     }
 
     @GetMapping("/{id}")
