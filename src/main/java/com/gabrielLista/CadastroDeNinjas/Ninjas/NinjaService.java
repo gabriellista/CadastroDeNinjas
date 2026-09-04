@@ -5,7 +5,6 @@ import com.gabrielLista.CadastroDeNinjas.Missoes.MissoesRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class NinjaService {
@@ -25,7 +24,7 @@ public class NinjaService {
         List<NinjaModel> ninjas = ninjaRepository.findAll();
         return ninjas.stream()
                 .map(ninjaMapper::map)
-                .collect(Collectors.toList());
+                .toList();
     }
 
 

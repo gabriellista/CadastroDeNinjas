@@ -33,7 +33,7 @@ public class MissoesViewController {
 
     @PostMapping("/{id}/editar")
     public String salvarEdicao(@PathVariable Long id, @ModelAttribute MissoesDTO missoesDTO){
-        MissoesDTO missao = missoesService.atualizarMissao(id, missoesDTO);
+        missoesService.atualizarMissao(id, missoesDTO);
         return "redirect:/web/missoes";
     }
 
