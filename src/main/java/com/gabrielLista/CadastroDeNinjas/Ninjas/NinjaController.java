@@ -16,10 +16,6 @@ public class NinjaController {
         this.ninjaService = ninjaService;
     }
 
-    @GetMapping("/boasvindas")
-    public String boasVindas(){
-        return "Essa é a minha primeira mensagem";
-    }
     //ADICIONAR NINJA
     @PostMapping("/criar")
     public ResponseEntity<String> criarNinja(@RequestBody NinjaDTO ninja){
