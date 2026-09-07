@@ -43,14 +43,14 @@ public class NinjaController {
 
     //ALTERAR NINJA
         @PatchMapping("/{id}")
-        public ResponseEntity<?> alterarNinjasporId(@PathVariable Long id,@RequestBody NinjaDTO ninjaDTO) {
-           NinjaDTO ninjaAtualizado = ninjaService.atualizarNinja(id, ninjaDTO);
+        public ResponseEntity<?> alterarNinjasporId(@PathVariable Long id,
+                                                    @RequestBody NinjaUpdateDTO ninjaUpdateDTO) {
+           NinjaDTO ninjaAtualizado = ninjaService.atualizarNinja(id, ninjaUpdateDTO);
            if (ninjaAtualizado != null){
                return ResponseEntity.ok(ninjaAtualizado);
            }else
-               return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                       .body("O ninja com o id "+ id + " não foi encontrado");
-        }
+               return ResponseEntity.notFound().build();
+    }
 
         //DELETAR NINJA
         @DeleteMapping("/{id}")

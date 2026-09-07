@@ -84,21 +84,29 @@ public class NinjaService {
         return null;
     }
 
-    public NinjaDTO atualizarNinja(Long id, NinjaDTO ninjaDTO) {
+    public NinjaDTO atualizarNinja(Long id,NinjaUpdateDTO ninjaUpdateDTO) {
         Optional<NinjaModel> ninjaExistente = ninjaRepository.findById(id);
 
         if (ninjaExistente.isPresent()) {
             NinjaModel ninjaAtualizado = ninjaExistente.get();
-            if (ninjaDTO.getNome() != null) {
-                ninjaAtualizado.setNome(ninjaDTO.getNome());
-            }if (ninjaDTO.getEmail() != null) {
-                ninjaAtualizado.setEmail(ninjaDTO.getEmail());
-            }if (ninjaDTO.getIdade() != null) {
-                ninjaAtualizado.setIdade(ninjaDTO.getIdade());
-            }if (ninjaDTO.getImUrl() != null) {
-                ninjaAtualizado.setImUrl(ninjaDTO.getImUrl());
-            }if (ninjaDTO.getRank() != null) {
-                ninjaAtualizado.setRank(ninjaDTO.getRank());
+            if (ninjaUpdateDTO.getNome() != null) {
+                ninjaAtualizado.setNome(ninjaUpdateDTO.getNome());
+            }if (ninjaUpdateDTO.getEmail() != null) {
+                ninjaAtualizado.setEmail(ninjaUpdateDTO.getEmail());
+            }if (ninjaUpdateDTO.getIdade() != null) {
+                ninjaAtualizado.setIdade(ninjaUpdateDTO.getIdade());
+            }if (ninjaUpdateDTO.getImUrl() != null) {
+                ninjaAtualizado.setImUrl(ninjaUpdateDTO.getImUrl());
+            }if (ninjaUpdateDTO.getRank() != null) {
+                ninjaAtualizado.setRank(ninjaUpdateDTO.getRank());
+            }if (Boolean.TRUE.equals(ninjaUpdateDTO.getRemoverMissao())) {
+                ninjaAtualizado.setMissoes(null);
+            } else if (ninjaUpdateDTO.getMissaoId() != null) {
+                Optional<MissoesModel> missao =
+                        missoesRepository.findById(ninjaUpdateDTO.getMissaoId());
+                if (missao.isPresent()) {
+                    ninjaAtualizado.setMissoes(missao.get());
+                }
             }
             NinjaModel ninjaSalvo = ninjaRepository.save(ninjaAtualizado);
             return ninjaMapper.map(ninjaSalvo);
