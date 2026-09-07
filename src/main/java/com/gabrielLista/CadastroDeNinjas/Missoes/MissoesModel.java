@@ -1,18 +1,17 @@
 package com.gabrielLista.CadastroDeNinjas.Missoes;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gabrielLista.CadastroDeNinjas.Ninjas.NinjaModel;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
 import java.util.List;
 
 @Entity
 @Table(name = "tb_missoes")
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 
 public class MissoesModel {
 
@@ -24,7 +23,6 @@ public class MissoesModel {
 
     //UMA MISSAO TEM MAIS DE UM NINJA
     @OneToMany(mappedBy = "missoes")
-    @JsonIgnore
-    private List<NinjaModel> ninja;
+    private List<NinjaModel> ninjas;
 
 }

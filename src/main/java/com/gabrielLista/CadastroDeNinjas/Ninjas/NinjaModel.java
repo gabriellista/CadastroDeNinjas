@@ -2,9 +2,7 @@ package com.gabrielLista.CadastroDeNinjas.Ninjas;
 
 import com.gabrielLista.CadastroDeNinjas.Missoes.MissoesModel;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 
 //ele transforma umma classe em uma entidade do BB
@@ -14,7 +12,8 @@ import lombok.NoArgsConstructor;
 @Table(name ="tb_cadastro")
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 
 public class NinjaModel {
 
