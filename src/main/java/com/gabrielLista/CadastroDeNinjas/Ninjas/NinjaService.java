@@ -89,16 +89,20 @@ public class NinjaService {
 
         if (ninjaExistente.isPresent()) {
             NinjaModel ninjaAtualizado = ninjaExistente.get();
-
-            ninjaAtualizado.setNome(ninjaDTO.getNome());
-            ninjaAtualizado.setEmail(ninjaDTO.getEmail());
-            ninjaAtualizado.setRank(ninjaDTO.getRank());
-
+            if (ninjaDTO.getNome() != null) {
+                ninjaAtualizado.setNome(ninjaDTO.getNome());
+            }if (ninjaDTO.getEmail() != null) {
+                ninjaAtualizado.setEmail(ninjaDTO.getEmail());
+            }if (ninjaDTO.getIdade() != null) {
+                ninjaAtualizado.setIdade(ninjaDTO.getIdade());
+            }if (ninjaDTO.getImUrl() != null) {
+                ninjaAtualizado.setImUrl(ninjaDTO.getImUrl());
+            }if (ninjaDTO.getRank() != null) {
+                ninjaAtualizado.setRank(ninjaDTO.getRank());
+            }
             NinjaModel ninjaSalvo = ninjaRepository.save(ninjaAtualizado);
-
             return ninjaMapper.map(ninjaSalvo);
         }
-
         return null;
     }
 }
