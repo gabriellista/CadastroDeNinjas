@@ -36,11 +36,9 @@ public class MissoesService {
     }
 
     public MissoesDTO buscarMissaoPorId(Long id) {
-        Optional<MissoesModel> missao = missoesRepository.findById(id);
-        if (missao.isPresent()) {
-            return missoesMapper.map(missao.get());
-        }
-        return null;
+        return missoesRepository.findById(id)
+                .map(missoesMapper::map)
+                .orElse(null);
     }
 
     public MissoesDTO atualizarMissao(Long id, MissoesDTO missaoDTO) {
