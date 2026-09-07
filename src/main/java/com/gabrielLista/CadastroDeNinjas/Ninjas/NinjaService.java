@@ -34,9 +34,7 @@ public class NinjaService {
     }
 
     public NinjaDTO criarNinja(NinjaDTO ninjaDTO) {
-        NinjaModel ninja = ninjaMapper.map(ninjaDTO);
-        ninja = ninjaRepository.save(ninja);
-        return ninjaMapper.map(ninja);
+        return criarNinja(ninjaDTO,null);
     }
 
     public NinjaDTO criarNinja(NinjaDTO ninjaDTO, Long missaoId) {
