@@ -1,9 +1,15 @@
 package com.gabrielLista.CadastroDeNinjas.Ninjas;
 
+import com.gabrielLista.CadastroDeNinjas.Missoes.MissoesMapper;
 import org.springframework.stereotype.Component;
 
 @Component
 public class NinjaMapper {
+    private final MissoesMapper missoesMapper;
+
+    public NinjaMapper(MissoesMapper missoesMapper) {
+        this.missoesMapper = missoesMapper;
+    }
 
     public NinjaModel map(NinjaDTO ninjaDTO){
         NinjaModel ninjaModel = new NinjaModel();
@@ -15,8 +21,11 @@ public class NinjaMapper {
         }
         ninjaModel.setImUrl(ninjaDTO.getImUrl());
         ninjaModel.setRank(ninjaDTO.getRank());
-        ninjaModel.setMissoes(ninjaDTO.getMissoes());
-
+        if (ninjaDTO.getMissoes() != null) {
+            ninjaModel.setMissoes(
+                    missoesMapper.map(ninjaDTO.getMissoes())
+            );
+        }
         return ninjaModel;
     }
     public NinjaDTO map(NinjaModel ninjaModel){
@@ -28,7 +37,11 @@ public class NinjaMapper {
         ninjaDTO.setIdade(ninjaModel.getIdade());
         ninjaDTO.setImUrl(ninjaModel.getImUrl());
         ninjaDTO.setRank(ninjaModel.getRank());
-        ninjaDTO.setMissoes(ninjaModel.getMissoes());
+        if (ninjaModel.getMissoes() != null) {
+            ninjaDTO.setMissoes(
+                    missoesMapper.map(ninjaModel.getMissoes())
+            );
+        }
 
         return ninjaDTO;
     }

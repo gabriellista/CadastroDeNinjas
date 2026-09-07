@@ -1,6 +1,6 @@
 package com.gabrielLista.CadastroDeNinjas.Ninjas;
 
-import com.gabrielLista.CadastroDeNinjas.Missoes.MissoesModel;
+import com.gabrielLista.CadastroDeNinjas.Missoes.MissoesDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +16,6 @@ public class NinjaDTO {
     private String imUrl;
     private Integer idade;
     private String rank;
-    private MissoesModel missoes;
+    private MissoesDTO missoes;
 
 }
