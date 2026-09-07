@@ -29,6 +29,9 @@ public class NinjaViewController {
     @GetMapping("/{id}/editar")
     public String exibirFormularioEdicao(@PathVariable Long id, Model model) {
         NinjaDTO ninja = ninjaService.buscarNinjaPorId(id);
+        if (ninja == null){
+            return "redirect:/web/ninjas";
+        }
         List<MissoesDTO> missoes = missoesService.listarMissoes();
         model.addAttribute("ninja", ninja);
         model.addAttribute("missoes", missoes);

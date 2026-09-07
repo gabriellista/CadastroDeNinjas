@@ -27,6 +27,9 @@ public class MissoesViewController {
     @GetMapping("/{id}/editar")
     public String exibirFormularioEdicao(@PathVariable Long id,Model model){
         MissoesDTO missao = missoesService.buscarMissaoPorId(id);
+        if (missao == null){
+            return "redirect:/web/missoes";
+        }
         model.addAttribute("missao",missao);
         return "missoes/editar";
     }
