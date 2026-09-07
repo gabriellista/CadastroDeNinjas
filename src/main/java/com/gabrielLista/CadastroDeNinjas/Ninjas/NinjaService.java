@@ -66,6 +66,8 @@ public class NinjaService {
             NinjaModel ninjaAtualizado = ninjaExistente.get();
             ninjaAtualizado.setNome(ninjaDTO.getNome());
             ninjaAtualizado.setEmail(ninjaDTO.getEmail());
+            ninjaAtualizado.setIdade(ninjaDTO.getIdade());
+            ninjaAtualizado.setImUrl(ninjaDTO.getImUrl());
             ninjaAtualizado.setRank(ninjaDTO.getRank());
             if (missaoId != null) {
                 Optional<MissoesModel> missao =

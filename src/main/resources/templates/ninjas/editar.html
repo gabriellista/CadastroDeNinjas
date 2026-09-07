@@ -11,18 +11,24 @@
 
 <h1>Editar Ninja</h1>
 
-<form th:object="${ninja}"
-      method="post"
-      th:action="@{/web/ninjas/{id}/editar(id=${ninja.id})}">
+    <form th:object="${ninja}"
+          method="post"
+          th:action="@{/web/ninjas/{id}/editar(id=${ninja.id})}">
 
-    <label>Nome:</label>
-    <input type="text" th:field="*{nome}">
+        <label>Nome:</label>
+        <input type="text" th:field="*{nome}">
 
-    <label>Email:</label>
-    <input type="text" th:field="*{email}">
+        <label>Email:</label>
+        <input type="text" th:field="*{email}">
 
-    <label>Rank:</label>
-    <input type="text" th:field="*{rank}">
+        <label>Idade:</label>
+        <input type="number" th:field="*{idade}">
+
+        <label>Imagem:</label>
+        <input type="text" th:field="*{imUrl}">
+
+        <label>Rank:</label>
+        <input type="text" th:field="*{rank}">
 
     <label>Missão:</label>
 
