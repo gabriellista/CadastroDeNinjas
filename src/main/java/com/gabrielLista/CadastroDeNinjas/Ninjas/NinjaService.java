@@ -104,9 +104,11 @@ public class NinjaService {
             } else if (ninjaUpdateDTO.getMissaoId() != null) {
                 Optional<MissoesModel> missao =
                         missoesRepository.findById(ninjaUpdateDTO.getMissaoId());
-                if (missao.isPresent()) {
-                    ninjaAtualizado.setMissoes(missao.get());
+                if (missao.isEmpty()) {
+                    return null;
                 }
+                    ninjaAtualizado.setMissoes(missao.get());
+
             }
             NinjaModel ninjaSalvo = ninjaRepository.save(ninjaAtualizado);
             return ninjaMapper.map(ninjaSalvo);
