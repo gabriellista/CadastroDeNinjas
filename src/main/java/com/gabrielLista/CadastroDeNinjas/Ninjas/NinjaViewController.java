@@ -26,6 +26,16 @@ public class NinjaViewController {
         return "ninjas/listar";
     }
 
+    @GetMapping("/{id}")
+    public String exibirDetalhes(@PathVariable Long id,Model model){
+        NinjaDTO ninja = ninjaService.buscarNinjaPorId(id);
+        if (ninja == null){
+            return "redirect:/web/ninjas";
+        }
+        model.addAttribute("ninja", ninja);
+        return "ninjas/detalhes";
+    }
+
     @GetMapping("/{id}/editar")
     public String exibirFormularioEdicao(@PathVariable Long id, Model model) {
         NinjaDTO ninja = ninjaService.buscarNinjaPorId(id);

@@ -35,10 +35,13 @@
     <td th:text="${ninja.rank}"></td>
     <td th:text="${ninja.missoes != null ? ninja.missoes.nome : 'Sem missão'}"></td>
     <td>
+        <a th:href="@{/web/ninjas/{id}(id=${ninja.id})}">
+            Ver detalhes
+        </a>
         <a th:href="@{/web/ninjas/{id}/editar(id=${ninja.id})}">
             Editar
         </a>
-        <form th:action="@{/web/ninjas/{id}/excluir(id=${ninja.id})}"
+                <form th:action="@{/web/ninjas/{id}/excluir(id=${ninja.id})}"
               method="post">
             <button type="submit">Excluir</button>
         </form>
