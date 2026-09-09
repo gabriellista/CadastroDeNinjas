@@ -40,16 +40,27 @@
     <td th:text="${ninja.rank}"></td>
     <td th:text="${ninja.missoes != null ? ninja.missoes.nome : 'Sem missão'}"></td>
     <td>
-        <a th:href="@{/web/ninjas/{id}(id=${ninja.id})}">
-            Ver detalhes
-        </a>
-        <a th:href="@{/web/ninjas/{id}/editar(id=${ninja.id})}">
-            Editar
-        </a>
-                <form th:action="@{/web/ninjas/{id}/excluir(id=${ninja.id})}"
-              method="post">
-            <button type="submit">Excluir</button>
-        </form>
+    <td>
+        <div class="acoes">
+
+            <a class="btn-detalhes"
+               th:href="@{/web/ninjas/{id}(id=${ninja.id})}">
+                Ver detalhes
+            </a>
+
+            <a class="btn-editar"
+               th:href="@{/web/ninjas/{id}/editar(id=${ninja.id})}">
+                Editar
+            </a>
+
+            <form th:action="@{/web/ninjas/{id}/excluir(id=${ninja.id})}"
+                  method="post">
+                <button class="btn-excluir" type="submit">
+                    Excluir
+                </button>
+            </form>
+
+        </div>
     </td>
 </tr>
 </table>

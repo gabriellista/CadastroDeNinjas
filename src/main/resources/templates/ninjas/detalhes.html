@@ -11,32 +11,56 @@
 
 <div th:replace="~{fragments/navbar :: navbar}"></div>
 <main class="container">
-<h1>Detalhes do Ninja</h1>
 
+    <h1>Detalhes do Ninja</h1>
 
-<img th:src="${ninja.imUrl}"
-     th:alt="${ninja.nome}">
-<p>
-    <strong>Nome:</strong>
-    <span th:text="${ninja.nome}"></span>
-</p>
-<p>
-    <strong>Email:</strong>
-    <span th:text="${ninja.email}"></span>
-</p>
-<p>
-    <strong>Idade:</strong>
-    <span th:text="${ninja.idade}"></span>
-</p>
-<p>
-    <strong>Rank:</strong>
-    <span th:text="${ninja.rank}"></span>
-</p>
-<p>
-    <strong>Missão:</strong>
-    <span th:text="${ninja.missoes != null ? ninja.missoes.nome : 'Sem missão'}"></span>
-</p>
-<a th:href="@{/web/ninjas}">Voltar</a>
+    <section class="ninja-detalhes">
+
+        <img class="ninja-detalhes-img"
+             th:src="${ninja.imUrl}"
+             th:alt="${ninja.nome}">
+
+        <div class="ninja-detalhes-info">
+
+            <p>
+                <strong>Nome:</strong>
+                <span th:text="${ninja.nome}"></span>
+            </p>
+
+            <p>
+                <strong>Email:</strong>
+                <span th:text="${ninja.email}"></span>
+            </p>
+
+            <p>
+                <strong>Idade:</strong>
+                <span th:text="${ninja.idade}"></span>
+            </p>
+
+            <p>
+                <strong>Rank:</strong>
+                <span th:text="${ninja.rank}"></span>
+            </p>
+
+            <p>
+                <strong>Missão:</strong>
+                <span th:text="${ninja.missoes != null ? ninja.missoes.nome : 'Sem missão'}"></span>
+            </p>
+
+            <div class="form-acoes">
+                <a class="btn-editar"
+                   th:href="@{/web/ninjas/{id}/editar(id=${ninja.id})}">
+                    Editar
+                </a>
+
+                <a th:href="@{/web/ninjas}">
+                    Voltar para Ninjas
+                </a>
+            </div>
+
+        </div>
+
+    </section>
 </main>
 </body>
 </html>

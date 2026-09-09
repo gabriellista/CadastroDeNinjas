@@ -31,15 +31,21 @@
         <td th:text="${missao.dificuldade}"></td>
 
         <td>
-            <a th:href="@{/web/missoes/{id}/editar(id=${missao.id})}">
-                Editar
-            </a>
-            <form th:action="@{/web/missoes/{id}/excluir(id=${missao.id})}"
-                  method="post">
+            <div class="acoes">
 
-                <button type="submit">Excluir</button>
+                <a class="btn-editar"
+                   th:href="@{/web/missoes/{id}/editar(id=${missao.id})}">
+                    Editar
+                </a>
 
-            </form>
+                <form th:action="@{/web/missoes/{id}/excluir(id=${missao.id})}"
+                      method="post">
+                    <button class="btn-excluir" type="submit">
+                        Excluir
+                    </button>
+                </form>
+
+            </div>
         </td>
     </tr>
 
