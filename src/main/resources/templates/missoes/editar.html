@@ -5,26 +5,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Editar Missão</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
 </head>
 
 <body>
-
 <div th:replace="~{fragments/navbar :: navbar}"></div>
+<main class="container">
+<h1>Editar Missão</h1>
 
-<form th:object="${missao}"
-      method="post"
-      th:action="@{/web/missoes/{id}/editar(id=${missao.id})}">
+<form th:action="@{/web/missoes/nova}"
+            th:object="${missao}"
+            method="post"
+            class="formulario">
 
-    <label>Nome:</label>
-    <input type="text" th:field="*{nome}">
+    <div class="form-grupo">
+        <label>Nome:</label>
+        <input type="text" th:field="*{nome}">
+    </div>
 
-    <label>Dificuldade:</label>
-    <input type="text" th:field="*{dificuldade}">
+    <div class="form-grupo">
+        <label>Dificuldade:</label>
+        <input type="text" th:field="*{dificuldade}">
+    </div>
 
+    <div class="form-acoes">
     <button type="submit">Salvar</button>
     <a th:href="@{/web/missoes}">Voltar para Missões</a>
+    </div>
 
 </form>
+</main>
 
 </body>
 </html>

@@ -5,52 +5,70 @@
 <head>
     <meta charset="UTF-8">
     <title>Editar Ninja</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
 <body>
 
 <div th:replace="~{fragments/navbar :: navbar}"></div>
+<main class="container">
 
 <h1>Editar Ninja</h1>
 
-    <form th:object="${ninja}"
+    <form th:action="@{/web/ninjas/{id}/editar(id=${ninja.id})}"
+          th:object="${ninja}"
           method="post"
-          th:action="@{/web/ninjas/{id}/editar(id=${ninja.id})}">
+          class="formulario">
 
-        <label>Nome:</label>
-        <input type="text" th:field="*{nome}">
+        <div class="form-grupo">
+            <label>Nome:</label>
+            <input type="text" th:field="*{nome}">
+        </div>
 
-        <label>Email:</label>
-        <input type="text" th:field="*{email}">
+        <div class="form-grupo">
+            <label>Email:</label>
+            <input type="text" th:field="*{email}">
+        </div>
 
-        <label>Idade:</label>
-        <input type="number" th:field="*{idade}">
+        <div class="form-grupo">
+            <label>Idade:</label>
+            <input type="text" th:field="*{idade}">
+        </div>
 
-        <label>Imagem:</label>
-        <input type="text" th:field="*{imUrl}">
+        <div class="form-grupo">
+            <label>Rank:</label>
+            <input type="text" th:field="*{rank}">
+        </div>
 
-        <label>Rank:</label>
-        <input type="text" th:field="*{rank}">
+        <div class="form-grupo">
+            <label>Imagem:</label>
+            <input type="text" th:field="*{imUrl}">
+        </div>
 
-    <label>Missão:</label>
+        <div class="form-grupo">
+            <label>Missão:</label>
 
-    <select name="missaoId">
-        <option value=""
-                th:selected="${ninja.missoes == null}">
-            Sem missão
-        </option>
+            <select name="missaoId">
+                <option value=""
+                        th:selected="${ninja.missoes == null}">
+                    Sem missão
+                </option>
 
-        <option th:each="missao : ${missoes}"
-                th:value="${missao.id}"
-                th:text="${missao.nome}"
-                th:selected="${ninja.missoes != null and ninja.missoes.id == missao.id}">
-        </option>
-    </select>
+                <option th:each="missao : ${missoes}"
+                        th:value="${missao.id}"
+                        th:text="${missao.nome}"
+                        th:selected="${ninja.missoes != null and ninja.missoes.id == missao.id}">
+                </option>
+            </select>
+        </div>
 
-    <button type="submit">Salvar</button>
-        <a th:href="@{/web/ninjas}">Voltar para Ninjas</a>
+        <div class="form-acoes">
+            <button type="submit">Salvar</button>
+            <a th:href="@{/web/ninjas}">Voltar para Ninjas</a>
+        </div>
 
 </form>
+</main>
 
 </body>
 </html>

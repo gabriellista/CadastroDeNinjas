@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Ninjas</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
+
 <body>
 
 <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+
+<main class="container">
 
 <h1>Lista de Ninjas</h1>
 
@@ -48,6 +53,8 @@
     </td>
 </tr>
 </table>
+
+</main>
 
 </body>
 </html>

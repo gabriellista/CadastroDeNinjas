@@ -5,10 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Detalhes do Ninja</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 
 <div th:replace="~{fragments/navbar :: navbar}"></div>
+<main class="container">
 <h1>Detalhes do Ninja</h1>
 
 
@@ -35,5 +37,6 @@
     <span th:text="${ninja.missoes != null ? ninja.missoes.nome : 'Sem missão'}"></span>
 </p>
 <a th:href="@{/web/ninjas}">Voltar</a>
+</main>
 </body>
 </html>
