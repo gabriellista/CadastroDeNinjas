@@ -2,7 +2,10 @@
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Ninjas</title>
+
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
@@ -37,7 +40,11 @@
     <td th:text="${ninja.nome}"></td>
     <td th:text="${ninja.email}"></td>
     <td th:text="${ninja.idade}"></td>
-    <td th:text="${ninja.rank}"></td>
+    <td>
+    <span class="badge-rank"
+          th:text="${ninja.rank}">
+    </span>
+    </td>
     <td th:text="${ninja.missoes != null ? ninja.missoes.nome : 'Sem missão'}"></td>
     <td>
     <td>

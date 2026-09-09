@@ -4,7 +4,10 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Missões</title>
+
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
@@ -28,7 +31,11 @@
     <tr th:each="missao : ${missoes}">
         <td th:text="${missao.id}"></td>
         <td th:text="${missao.nome}"></td>
-        <td th:text="${missao.dificuldade}"></td>
+        <td>
+    <span class="badge-dificuldade"
+          th:text="${missao.dificuldade}">
+    </span>
+        </td>
 
         <td>
             <div class="acoes">
