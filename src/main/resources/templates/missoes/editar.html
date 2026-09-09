@@ -16,10 +16,10 @@
 <main class="container">
 <h1>Editar Missão</h1>
 
-<form th:action="@{/web/missoes/nova}"
-            th:object="${missao}"
-            method="post"
-            class="formulario">
+    <form th:action="@{/web/missoes/{id}/editar(id=${missao.id})}"
+          th:object="${missao}"
+          method="post"
+          class="formulario">
 
     <div class="form-grupo">
         <label>Nome:</label>
